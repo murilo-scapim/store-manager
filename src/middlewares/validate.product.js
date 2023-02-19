@@ -7,7 +7,7 @@ const schema = joi.object({
 const validateProduct = async (req, res, next) => {
   const { name } = req.body;
   if (name === undefined) {
-    return res.status(400).json({ message: 'name is required' });
+    return res.status(400).json({ message: '"name" is required' });
   }
   
   const { error } = schema.validate({ name });
