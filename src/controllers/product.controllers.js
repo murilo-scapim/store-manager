@@ -6,7 +6,9 @@ const findAll = async (req, res) => {
 };
 
 const create = async (req, res) => {
-
+  const { name } = req.body;
+  const product = await service.create(name);
+  return res.status(201).json(product);
 };
 
 module.exports = {
