@@ -5,6 +5,11 @@ const findAll = async (req, res) => {
   return res.status(200).json(products);
 };
 
+const create = async (req, res) => {
+
+};
+
 module.exports = {
   findAll,
+  create,
 };
