@@ -8,7 +8,6 @@ const create = async () => {
 };
 
 const createSalesProducts = async (product) => {
-  console.log(product);
   await connection.execute(`INSERT INTO StoreManager.sales_products
     VALUES (?, ?, ?);`, [product.saleId, product.productId, product.quantity]);
 };
