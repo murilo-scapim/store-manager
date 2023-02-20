@@ -1,4 +1,5 @@
 const joi = require('joi');
+const service = require('../services/product.service');
 
 const validateSale = async (req, res, next) => {
   const schema = joi.array().items(joi.object({
@@ -18,6 +19,20 @@ const validateSale = async (req, res, next) => {
   next();
 };
 
+const validateProduct = async (req, res, next) => {
+  const products = req.body;
+
+  const result = await Promise.all(
+    products.map((product) => service.findById(product.productId)),
+  );
+
+  if (result.some((product) => product === undefined)) {
+    return res.status(404).json({ message: 'Product not found' });
+  }
+  next();
+};
+
 module.exports = {
   validateSale,
+  validateProduct,
 };
