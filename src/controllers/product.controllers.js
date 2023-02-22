@@ -29,9 +29,17 @@ const update = async (req, res) => {
   return res.status(200).json(product);
 };
 
+const drop = async (req, res) => {
+  const { id } = req.params;
+  const result = await service.drop(id);
+  if (!result) return res.status(404).json({ message: 'Product not found' });
+  return res.status(204).json();
+};
+
 module.exports = {
   findAll,
   findById,
   create,
   update,
+  drop,
 };

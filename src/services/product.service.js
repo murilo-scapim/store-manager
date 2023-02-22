@@ -16,9 +16,12 @@ const update = async (id, name) => {
   };
 };
 
+const drop = async (id) => model.drop(id);
+
 module.exports = {
   findAll,
   findById,
   create,
   update,
+  drop,
 };
