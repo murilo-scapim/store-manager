@@ -14,7 +14,10 @@ const create = async (products) => {
 
 const findAll = async () => model.findAll();
 
+const findById = async (id) => model.findById(id);
+
 module.exports = {
   create,
   findAll,
+  findById,
 };
