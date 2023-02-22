@@ -12,6 +12,9 @@ const create = async (products) => {
   };
 };
 
+const findAll = async () => model.findAll();
+
 module.exports = {
   create,
+  findAll,
 };

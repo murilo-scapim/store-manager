@@ -12,7 +12,17 @@ const createSalesProducts = async (product) => {
     VALUES (?, ?, ?);`, [product.saleId, product.productId, product.quantity]);
 };
 
+const findAll = async () => {
+  const [sales] = await connection.execute(
+    `SELECT s.id AS saleId, s.date, sp.product_id AS productId, sp.quantity
+    FROM StoreManager.sales s INNER JOIN StoreManager.sales_products sp
+    ON s.id = sp.sale_id;`,
+  );
+  return sales;
+};
+
 module.exports = {
   create,
   createSalesProducts,
+  findAll,
 };
