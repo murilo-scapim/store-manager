@@ -28,9 +28,12 @@ const update = async (id, products) => {
   };
 };
 
+const drop = async (id) => model.drop(id);
+
 module.exports = {
   create,
   findAll,
   findById,
   update,
+  drop,
 };

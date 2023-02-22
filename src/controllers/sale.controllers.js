@@ -13,7 +13,7 @@ const findAll = async (req, res) => {
 const findById = async (req, res) => {
   const { id } = req.params;
   const sale = await service.findById(id);
-  if (!sale) return res.status(404).json({ message: 'Sale not found' });
+  if (!sale.length) return res.status(404).json({ message: 'Sale not found' });
   return res.status(200).json(sale);
 };
 
@@ -25,9 +25,17 @@ const update = async (req, res) => {
   return res.status(200).json(sale);
 };
 
+const drop = async (req, res) => {
+  const { id } = req.params;
+  const result = await service.drop(id);
+  if (!result) return res.status(404).json({ message: 'Sale not found' });
+  return res.status(204).json();
+};
+
 module.exports = {
   create,
   findAll,
   findById,
   update,
+  drop,
 };
