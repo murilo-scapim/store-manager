@@ -36,10 +36,17 @@ const drop = async (req, res) => {
   return res.status(204).json();
 };
 
+const search = async (req, res) => {
+  const { q } = req.query;
+  const products = await service.search(q);
+  return res.status(200).json(products);
+};
+
 module.exports = {
   findAll,
   findById,
   create,
   update,
   drop,
+  search,
 };

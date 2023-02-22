@@ -40,10 +40,19 @@ const drop = async (id) => {
   return !!affectedRows;
 };
 
+const search = async (q) => {
+  const [products] = await connection.execute(
+    'SELECT * FROM StoreManager.products WHERE name LIKE ?',
+    [`%${q}%`],
+  );
+  return products;
+};
+
 module.exports = {
   findAll,
   findById,
   create,
   update,
   drop,
+  search,
 };

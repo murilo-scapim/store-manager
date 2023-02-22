@@ -18,10 +18,13 @@ const update = async (id, name) => {
 
 const drop = async (id) => model.drop(id);
 
+const search = async (q) => model.search(q);
+
 module.exports = {
   findAll,
   findById,
   create,
   update,
   drop,
+  search,
 };
