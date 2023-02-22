@@ -16,8 +16,21 @@ const findAll = async () => model.findAll();
 
 const findById = async (id) => model.findById(id);
 
+const update = async (id, products) => {
+  const sale = await findById(id);
+  if (!sale.length) return null;
+  
+  await Promise.all(products.map((p) => model.update(id, p)));
+
+  return {
+    saleId: id,
+    itemsUpdated: products,
+  };
+};
+
 module.exports = {
   create,
   findAll,
   findById,
+  update,
 };
